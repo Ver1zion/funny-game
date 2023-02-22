@@ -1,0 +1,89 @@
+body {
+  overflow: hidden;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  height: 100vh;
+  background-color: black;
+  color: white;
+}
+
+.main {
+  display: none;
+  position: relative;
+  max-width: 100%;
+  height: 100vh;
+  background: radial-gradient(
+    circle,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(111, 55, 193, 1) 51%,
+    rgba(29, 14, 17, 1) 100%
+  );
+}
+
+.game-over {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  height: 100vh;
+  background-color: black;
+  color: white;
+}
+
+.timer {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  color: white;
+  font-size: 40px;
+}
+
+.ball {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 46%;
+  left: 48%;
+
+  border-radius: 50%;
+  transition: 0.3s;
+}
+.ball:hover {
+  background-color: red;
+}
+
+.score {
+  text-align: center;
+  font-size: 40px;
+  color: white;
+}
+
+.score-counter {
+  color: rgb(255, 2, 2);
+}
+
+.time-counter {
+  color: rgb(255, 2, 2);
+}
+
+.score-sum {
+  color: white;
+}
+
+
+.unselectable {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
