@@ -16,7 +16,7 @@ function resetGame() {
 
 function timer() {
   timeCounter.textContent = parseInt(timeCounter.textContent - 1);
-  if (timeCounter.textContent === "25") {
+  if (timeCounter.textContent === "-1") {
     gameOver.style.display = "flex";
     NumberOfScore.textContent = scoreCounter.textContent;
   }
@@ -45,5 +45,3 @@ ball.addEventListener("click", () => {
 ball.addEventListener("click", () => {
   return (scoreCounter.textContent = parseInt(scoreCounter.textContent) + 1);
 }); // increase score (+1) after clicking on ball
-
-// console.log(timeCounter.textContent)
