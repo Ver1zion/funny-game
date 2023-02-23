@@ -36,8 +36,8 @@ startGameButton.addEventListener("click", () => {
 startGameButton.addEventListener("click", StartTimer); // after pressing on "START GAME" timer will be on and game will be started
 
 ball.addEventListener("click", () => {
-  const coordsLeft = 1000;
-  const coordsTop = 500;
+  const coordsLeft = 1900;
+  const coordsTop = 800;
   ball.style.left = Math.random() * coordsLeft + "px";
   ball.style.top = Math.random() * coordsTop + "px";
 }); //random position of ball when clicked on ball
