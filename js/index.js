@@ -42,5 +42,5 @@ ball.addEventListener("click", () => {
 }); //random position of ball when clicked on ball
 
 ball.addEventListener("click", () => {
-  return (scoreCounter.textContent = parseInt(scoreCounter.textContent) + 1);
+  scoreCounter.textContent = parseInt(scoreCounter.textContent) + 1;
 }); // increase score (+1) after clicking on ball
