@@ -9,22 +9,28 @@ const resetGameButton = document.querySelector(".reset");
 const ball = document.querySelector(".ball");
 const scoreCounter = document.querySelector(".score-counter");
 const timeCounter = document.querySelector(".time-counter");
+let time; // used to manipulate timer
 
 function resetGame() {
   location.reload();
 } // using to reload page
+
+function StartTimer() {
+  time = setInterval(timer, 1000);
+} // activate timer
+
+function stopTimer() {
+  clearInterval(time);
+} // stop timer
 
 function timer() {
   timeCounter.textContent = parseInt(timeCounter.textContent - 1);
   if (timeCounter.textContent === "-1") {
     gameOver.style.display = "flex";
     NumberOfScore.textContent = scoreCounter.textContent;
+    stopTimer(); // in that moment timer will be stoped
   }
 } // decrease time on 1 sec and return block "game over" when time will be -1 sec
-
-function StartTimer() {
-  setInterval(timer, 1000);
-} // activate timer
 
 resetGameButton.addEventListener("click", resetGame); // after pressing on "Play again" the game will be restarted
 
