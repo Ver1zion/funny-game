@@ -1,6 +1,47 @@
 "use strict";
 
-const NumberOfScore = document.querySelector(".score-sum");
+class Game {
+  constructor(gameDuration) {
+    this.gameDuration = parseInt(gameDuration);
+    timeCounter.innerText = this.gameDuration;
+  }
+
+  resetGame() {
+    location.reload();
+  }
+
+  timer = () => {
+    this.gameDuration -= 1;
+    timeCounter.innerText = this.gameDuration;
+    if (timeCounter.innerText === "-1") {
+      gameOver.style.display = "flex";
+      totalScore.innerText = scoreCounter.innerText;
+      this.stopTimer();
+    }
+  };
+
+  startTimer() {
+    this.time = setInterval(this.timer, 1000);
+  }
+
+  stopTimer() {
+    clearInterval(this.time);
+  }
+
+  updateBall() {
+    const coords = [1860, 830];
+    ball.style.left = Math.random() * coords[0] + "px";
+    ball.style.top = Math.random() * coords[1] + "px";
+    scoreCounter.innerText = parseInt(scoreCounter.innerText) + 1;
+  }
+
+  hideMainMenu() {
+    menu.style.display = "none";
+    playArea.style.display = "block";
+  }
+}
+
+const totalScore = document.querySelector(".score-sum");
 const menu = document.querySelector(".menu");
 const playArea = document.querySelector(".main");
 const gameOver = document.querySelector(".game-over");
@@ -9,44 +50,21 @@ const resetGameButton = document.querySelector(".reset");
 const ball = document.querySelector(".ball");
 const scoreCounter = document.querySelector(".score-counter");
 const timeCounter = document.querySelector(".time-counter");
-let time; // used to manipulate timer
 
-function resetGame() {
-  location.reload();
-} // using to reload page
+const game = new Game("30");
 
-function StartTimer() {
-  time = setInterval(timer, 1000);
-} // activate timer
-
-function stopTimer() {
-  clearInterval(time);
-} // stop timer
-
-function timer() {
-  timeCounter.textContent = parseInt(timeCounter.textContent - 1);
-  if (timeCounter.textContent === "-1") {
-    gameOver.style.display = "flex";
-    NumberOfScore.textContent = scoreCounter.textContent;
-    stopTimer(); // in that moment timer will be stoped
-  }
-} // decrease time on 1 sec and return block "game over" when time will be -1 sec
-
-resetGameButton.addEventListener("click", resetGame); // after pressing on "Play again" the game will be restarted
+resetGameButton.addEventListener("click", () => {
+  game.resetGame();
+});
 
 startGameButton.addEventListener("click", () => {
-  menu.style.display = "none";
-  playArea.style.display = "block";
-}); // hide menu after pressing "START GAME"
+  game.hideMainMenu();
+});
 
-startGameButton.addEventListener("click", StartTimer); // after pressing on "START GAME" timer will be on and game will be started
-
-ball.addEventListener("click", () => {
-  const coords = [1690, 830];
-  ball.style.left = Math.random() * coords[0] + "px";
-  ball.style.top = Math.random() * coords[1] + "px";
-}); //random position of ball when clicked on ball
+startGameButton.addEventListener("click", () => {
+  game.startTimer();
+});
 
 ball.addEventListener("click", () => {
-  scoreCounter.textContent = parseInt(scoreCounter.textContent) + 1;
-}); // increase score (+1) after clicking on ball
+  game.updateBall();
+});
