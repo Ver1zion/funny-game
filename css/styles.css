@@ -51,9 +51,10 @@ body {
   position: absolute;
   top: 46%;
   left: 48%;
-
   border-radius: 50%;
+  border: black 2px solid;
   transition: 0.2s;
+  z-index: 10;
 }
 .ball:hover {
   background-color: red;
