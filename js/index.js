@@ -29,9 +29,11 @@ class Game {
   }
 
   updateBall() {
-    const coords = [1860, 830];
     ball.style.left = Math.random() * (playArea.clientWidth - 50) + "px";
     ball.style.top = Math.random() * (playArea.clientHeight - 50) + "px";
+    if (parseFloat(ball.style.left) < 25) {
+      ball.style.left = Math.random() * (playArea.clientWidth - 50) + "px";
+    }
     scoreCounter.innerText = parseInt(scoreCounter.innerText) + 1;
   }
 
